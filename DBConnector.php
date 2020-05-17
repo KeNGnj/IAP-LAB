@@ -4,9 +4,7 @@
 	define('DB_PASS', '');
 	define('DB_NAME', 'btc3205');
 
-/**
- * 
- */
+
 	class DBConnector{ 
 		public $conn;
 		
@@ -20,6 +18,4 @@
 			return mysqli_close($this->conn);
 		}
 	}
-
-
 	?>
