@@ -10,13 +10,18 @@
 		private $city_name;
 		private $username;
 		private $password;
-		function __construct($first_name,$last_name,$city_name,$username,$password)
+		private $utc_timestamp;
+		private $time_zone_offset;
+
+		function __construct($first_name,$last_name,$city_name,$username,$password,$utc_timestamp,$time_zone_offset)
 		{
 			$this->first_name = $first_name;
 			$this->last_name = $last_name;
 			$this->city_name = $city_name;
 			$this->username = $username;
 			$this->password = $password;
+			$this->time_zone_offset = $time_zone_offset;
+			$this->utc_timestamp = $utc_timestamp;
 		}
 		public static function create() {
 			$instance = new ReflectionClass(__CLASS__);
@@ -44,6 +49,18 @@
 		public function getPassword(){
 			return $this->password;
 		}
+		public function setUtcTimeStamp($utc_timestamp){
+			$this->utc_timestamp =$utc_timestamp;
+		}
+		public function getUtcTimeStamp(){
+			return $this;
+		}
+		public function setTimeZoneOffset($time_zone_offset){
+			$this->time_zone_offset =$time_zone_offset;
+		}
+		public function getTimeZoneOffset(){
+			return $this;
+		}
 		public function initConnection(){
 			$conn = new DBConnector();
 			return $conn->__construct();
@@ -61,8 +78,10 @@
 			$uname = $this->username;
 			$this->hashPassword();
 			$pass =$this->password;
+			$offset = $this->time_zone_offset;
+			$timestamp = $this->utc_timestamp;
 			$sql = $this->initConnection();
-			$query = "INSERT INTO user( first_name,last_name,user_city,username,password ) VALUES('$fn','$ln','$city','$uname','$pass')";
+			$query = "INSERT INTO user( first_name,last_name,user_city,username,password,utc_time,offset ) VALUES('$fn','$ln','$city','$uname','$pass','$timestamp,''$offset)";
 			$res = mysqli_query($sql,$query) or die("Error: " .mysqli_error($sql));
 			$this->closeConnection();
 			return $res;

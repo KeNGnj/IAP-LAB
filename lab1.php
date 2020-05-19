@@ -16,7 +16,7 @@
 		$utc_timestamp = $_POST['utc_timestamp'];
 		$offset = $_POST['time_zone_offset'];
 
-		$user = new User($first_name,$last_name,$city,$username,$password);
+		$user = new User($first_name,$last_name,$city,$username,$password,$utc_timestamp,$time_zone_effect);
 		//create object for file uploading
 		$uploader = new FileUploader;
 		if(!$user->validateForm()){
