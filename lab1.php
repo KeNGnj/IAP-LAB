@@ -15,15 +15,17 @@
 
 
 		$user = new User($first_name,$last_name,$city,$username,$password);
-
+		//create object for file uploading
+		$uploader = new FileUploader;
 		if(!$user->validateForm()){
 			$user->createFormErrorSessions();
 			header("Refresh:0");
 			die();
 		}
 		$res = $user->save();
-
-		if($res){
+		//call uploadFile() function, which returns
+		$file_upload_response = $uploader->uploadFile();
+		if($res && $file_upload_response){
 			echo "Save operation was successful";
 		}else{
 			echo "An error occured";
