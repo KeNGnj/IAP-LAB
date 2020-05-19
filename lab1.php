@@ -1,4 +1,3 @@
-=
 <?php
 
 	include_once 'DBConnector.php';
@@ -15,11 +14,11 @@
 		$file = $_POST['fileToUpload'];
 		
 		$utc_timestamp = $_POST['utc_timestamp'];
-		$offset = $_POST['time_zone_offset'];
+		$time_zone_offset = $_POST['time_zone_offset'];
 
 		$user = new User($first_name,$last_name,$city,$username,$password,$utc_timestamp,$time_zone_effect);
 		//create object for file uploading
-		$uploader = new FileUploader;
+		$uploader = new FileUploader();
 		if(!$user->validateForm()){
 			$user->createFormErrorSessions();
 			header("Refresh:0");
