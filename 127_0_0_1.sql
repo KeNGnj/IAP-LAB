@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2020 at 03:52 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.3
+-- Generation Time: May 19, 2020 at 12:13 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -36,17 +36,20 @@ CREATE TABLE `user` (
   `last_name` varchar(32) DEFAULT NULL,
   `user_city` varchar(32) DEFAULT NULL,
   `username` varchar(20) DEFAULT NULL,
-  `password` text
+  `password` text DEFAULT NULL,
+  `profile_picture` longblob NOT NULL,
+  `utc_time` int(11) NOT NULL,
+  `offset` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `user_city`, `username`, `password`) VALUES
-(1, 'Kevin', 'James', 'Nairobi', NULL, NULL),
-(2, 'Kevin', 'James', 'Nairobi', NULL, NULL),
-(3, 'Kevin', 'James', 'Kisumu', NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `user_city`, `username`, `password`, `profile_picture`, `utc_time`, `offset`) VALUES
+(1, 'Kevin', 'James', 'Nairobi', NULL, NULL, '', 0, 0),
+(2, 'Kevin', 'James', 'Nairobi', NULL, NULL, '', 0, 0),
+(3, 'Kevin', 'James', 'Kisumu', NULL, NULL, '', 0, 0);
 
 --
 -- Indexes for dumped tables
