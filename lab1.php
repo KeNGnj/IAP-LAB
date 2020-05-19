@@ -12,6 +12,7 @@
 		$city = $_POST['city_name'];
 		$username = $_POST['name'];
 		$password = $_POST['password'];
+		$picture = $_POST['fileToUpload'];
 
 
 		$user = new User($first_name,$last_name,$city,$username,$password);
