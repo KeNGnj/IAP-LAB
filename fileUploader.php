@@ -38,7 +38,7 @@ class FileUploader{
 
     //methods
     public function uploadFile(){
-
+        
     }
     public function fileAlreadyExists(){
 

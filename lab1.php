@@ -12,6 +12,7 @@
 		$city = $_POST['city_name'];
 		$username = $_POST['name'];
 		$password = $_POST['password'];
+		$file = $_POST['fileToUpload'];
 		
 		$utc_timestamp = $_POST['utc_timestamp'];
 		$offset = $_POST['time_zone_offset'];
