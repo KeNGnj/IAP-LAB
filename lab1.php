@@ -12,8 +12,9 @@
 		$city = $_POST['city_name'];
 		$username = $_POST['name'];
 		$password = $_POST['password'];
-		$picture = $_POST['fileToUpload'];
-
+		
+		$utc_timestamp = $_POST['utc_timestamp'];
+		$offset = $_POST['time_zone_offset'];
 
 		$user = new User($first_name,$last_name,$city,$username,$password);
 		//create object for file uploading
@@ -41,6 +42,10 @@
 	<title>Sign UP</title>
 	<script type ="text/javascript" src = "validate.js"></script>
 	<link rel="stylesheet" type="text/css" href="validate.css">
+	<!--include jquery here. I decide to get it from a cnd network, Google-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!--your new js file comes after including your jquery-->
+	<script type="text/javasccript" src="timezone.js"></script>
 </head>
 <body>
 <form method="POST"  name = "user_details" id = "user_details" onsubmit="return validateForm()" action ="<?php echo $_SERVER['PHP_SELF'];?>">
@@ -79,6 +84,13 @@
 		</tr>
 		<tr>
 			<td><button type="submit" name="btn-save"<strong>SAVE</strong></button></td>
+		</tr>
+	
+		<input type="hidden" name="utc_timestamp" id="utc_timestamp" value=""/>
+		<input type="hidden" name="time_zone_offset" id="time_zone_offset" value="/">
+		
+		<tr>
+			<td><a href="login.php">Login</a></td>
 		</tr>
 	</table>
 </form>
